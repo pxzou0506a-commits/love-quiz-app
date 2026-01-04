@@ -86,7 +86,7 @@ def run_quiz():
         st.write("規則：點擊選項來回答問題。")
         if st.button("點此開始測驗！"):
             st.session_state.quiz_started = True
-            st.experimental_rerun()
+            st.rerun()
     else:
         if st.session_state.current_question_index < len(st.session_state.questions):
             q_index = st.session_state.current_question_index
@@ -102,7 +102,7 @@ def run_quiz():
                     st.session_state.current_question_index += 1
                     st.session_state.answered = False
                     st.session_state.feedback = ""
-                    st.experimental_rerun()
+                    st.rerun()
             else:
                 # Display options as radio buttons
                 selected_option = st.radio(
@@ -123,7 +123,7 @@ def run_quiz():
                             f"<p>📝 回憶小貼士: {current_q['e']}</p>"
                         )
                     st.session_state.answered = True
-                    st.experimental_rerun()
+                    st.rerun()
         else:
             # Quiz finished
             st.header("測驗結束！")
@@ -149,6 +149,6 @@ def run_quiz():
                 random.shuffle(st.session_state.questions)
                 st.session_state.answered = False
                 st.session_state.feedback = ""
-                st.experimental_rerun()
+                st.rerun()
 
 run_quiz()
